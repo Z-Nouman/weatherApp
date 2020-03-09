@@ -1,10 +1,21 @@
-const express = require('express')
-const app = express()
+// [START gae_node_request_example]
+const express = require('express');
 
-app.get('/', function (req, res) {
-  res.send('Fuck you!')
-})
+const app = express();
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+app.get('/', (req, res) => {
+  res
+    .status(200)
+    .send('Hello, world!')
+    .end();
+});
+
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+// [END gae_node_request_example]
+
+module.exports = app;
